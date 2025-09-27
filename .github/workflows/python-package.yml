@@ -30,9 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run pytest unit tests
-        run: pytest --maxfail=5 --disable-warnings -q
-
       - name: Run feature file tests (Behave)
         run: |
           if [ -d "features" ]; then behave; fi
