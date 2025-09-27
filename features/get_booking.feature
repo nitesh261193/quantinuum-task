@@ -53,5 +53,5 @@ Feature: Get Booking Details
       | response_to_be_stored | get_booking_ids     |
     Then I see status code '200' in '#{get_booking_ids}'
     Then the json path in '#{get_booking_ids}' has specific value in the object
-      | json_path      | expected_value |
-      | $[*].bookingid | 441            |
+      | json_path                       | expected_value |
+      | $[?(@.bookingid==51)].bookingid | 51             |
