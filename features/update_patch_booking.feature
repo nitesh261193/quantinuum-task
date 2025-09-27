@@ -6,6 +6,7 @@ Feature: Booking Patch Update
     Given I have created token header 'token_header'
 
 
+  @patch_call
   Scenario: Create and update the booking partially
     Given The payload stored as 'booking_payload'
     """

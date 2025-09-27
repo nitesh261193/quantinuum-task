@@ -6,6 +6,7 @@ Feature: Booking Update
     Given I have created token header 'token_header'
 
 
+  @put_call
   Scenario: Create and update the booking
     Given The payload stored as 'booking_payload'
     """

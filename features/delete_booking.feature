@@ -7,6 +7,7 @@ Feature: Booking Deletion
     Given I have created token header 'token_headers'
 
 
+  @delete_call
   Scenario: Create a new booking and delete it
     Given The payload stored as 'booking_payload'
     """

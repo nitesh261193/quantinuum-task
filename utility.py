@@ -64,7 +64,6 @@ def get_response_object_from_formatted_string(context, data):
 
 def match_single_json_obj(path, data):
     try:
-        log.info(f"JSONPath failed in match_single_json_obj: {path}")
         result = jp.match(path, data)
     except Exception as e:
         log.critical(f"JSONPath {path} failed in match_single_json_obj: {e}")
@@ -80,10 +79,6 @@ def is_specific_type(value, my_value=None):
         return str(value)
     elif isinstance(value, str) and value.isnumeric():
         return int(value)
-    elif isinstance(value, str) and value.replace(".", "", 1).isdecimal():
-        return float(value)
-    elif isinstance(value, str) and "[]" in value and not "@" in value:
-        return list(value.replace("[", "").replace("]", ""))
     elif value == "True":
         return True
     elif value == "False":

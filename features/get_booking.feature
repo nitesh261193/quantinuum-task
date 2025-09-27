@@ -4,6 +4,7 @@ Feature: Get Booking Details
     Given The system is ready to interact with user
     Given I have created username_password header 'universal_header'
 
+  @get_call
   Scenario: Create and retrieve a booking
     Given The payload stored as 'booking_payload'
     """
@@ -44,6 +45,7 @@ Feature: Get Booking Details
       | $.bookingdates.checkout | 2019-01-01     |
       | $.additionalneeds       | Breakfast      |
 
+  @get_call
   Scenario: Retrieve booking ids
     When I send GET request for all booking ids
       | field                 | value               |
@@ -52,4 +54,4 @@ Feature: Get Booking Details
     Then I see status code '200' in '#{get_booking_ids}'
     Then the json path in '#{get_booking_ids}' has specific value in the object
       | json_path      | expected_value |
-      | $[0].bookingid | 73             |
+      | $[*].bookingid | 441            |

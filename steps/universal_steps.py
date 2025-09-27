@@ -7,6 +7,7 @@ from header import Header
 from utility import get_formatting_string_value, get_response_object_from_formatted_string, match_single_json_obj, \
     is_specific_type
 import time
+from steps_definition.log_utility import log
 
 
 
@@ -20,7 +21,7 @@ async def fetch_health_status(context):
     try:
         response = await asyncio.wait_for(check_service_health(context.address, headers), timeout=2.0)
     except requests.RequestException as e:
-        print(f"Error fetching health status: {e}")
+        log.critical(f"Error fetching health status: {e}")
 
     assert response.status_code == 201, f"Health check failed,{response.text}"
 

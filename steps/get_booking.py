@@ -1,10 +1,12 @@
 import asyncio
 from behave import *
+from behave.api.async_step import async_run_until_complete
 from steps_definition.get_booking_request import get_booking, get_booking_ids
 from utility import table_to_object
 from steps_definition.log_utility import log
 
 @step('I send GET request for booking')
+@async_run_until_complete
 async def get_booking_details(context):
     my_table = table_to_object(context)
     headers = my_table["headers"]
@@ -17,6 +19,7 @@ async def get_booking_details(context):
     context.my_context.add(my_table["response_to_be_stored"], response)
 
 @step('I send GET request for all booking ids')
+@async_run_until_complete
 async def get_booking_details(context):
     my_table = table_to_object(context)
     headers = my_table["headers"]

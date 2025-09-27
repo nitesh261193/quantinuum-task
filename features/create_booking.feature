@@ -5,6 +5,7 @@ Feature: Booking Creation
     Given I have created username_password header 'universal_header'
 
 
+  @post_call
   Scenario: Create a new booking
     Given The payload stored as 'booking_payload'
     """
