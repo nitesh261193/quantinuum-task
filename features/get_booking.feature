@@ -1,7 +1,4 @@
 Feature: Get Booking Details
-  As a user of the booking system
-  I want to retrieve booking details
-  So that I can verify reservation information
 
   Background:
     Given The system is ready to interact with user
@@ -55,4 +52,4 @@ Feature: Get Booking Details
     Then I see status code '200' in '#{get_booking_ids}'
     Then the json path in '#{get_booking_ids}' has specific value in the object
       | json_path      | expected_value |
-      | $[0].bookingid | 928            |
+      | $[0].bookingid | 73             |

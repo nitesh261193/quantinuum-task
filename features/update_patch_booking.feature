@@ -1,7 +1,4 @@
-Feature: Booking Creation
-  As a user of the booking system
-  I want to create new bookings
-  So that I can manage reservations
+Feature: Booking Patch Update
 
   Background:
     Given The system is ready to interact with user

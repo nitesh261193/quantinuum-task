@@ -1,7 +1,5 @@
-Feature: Booking Creation
-  As a user of the booking system
-  I want to create new bookings
-  So that I can manage reservations
+Feature: Booking Deletion
+
 
   Background:
     Given The system is ready to interact with user
@@ -9,7 +7,7 @@ Feature: Booking Creation
     Given I have created token header 'token_headers'
 
 
-  Scenario: Create a new booking
+  Scenario: Create a new booking and delete it
     Given The payload stored as 'booking_payload'
     """
     {
