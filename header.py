@@ -1,34 +1,34 @@
 class Header:
-    def __init__(self, authorization, content_type, accept, lang, permissions):
-        self.authorization = authorization
+    def __init__(self, username=None, password=None, content_type=None, accept=None, cookie=None):
+        self.username = username
+        self.password = password
         self.content_type = content_type
         self.accept = accept
-        self.permissions = permissions
+        self.cookie = cookie
 
     def create_header(self, header_type="json"):
         if header_type == "json":
             return self._create_json_header(self)
-        elif header_type == "text":
-            return self._create_text_header(self)
+        elif header_type == "token":
+            return self._create_token_header(self)
         else:
             raise ValueError(f"Unknown header type: {header_type}")
 
     def _create_json_header(self, header):
         # private don't access directly
         headers = {
-            "authorization": header.authorization,
+            "username": header.username,
+            "password": header.password,
             "content-type": header.content_type,
             "Accept": header.accept,
-            "Accept-Language": header.accept_lang,
         }
         return headers
 
-    def _create_text_header(self, header):
+    def _create_token_header(self, header):
         # private don't access directly
         headers = {
-            "authorization": header.authorization,
             "content-type": header.content_type,
             "Accept": header.accept,
-            "Accept-Language": header.accept_lang,
+            "cookie": header.cookie,
         }
         return headers
