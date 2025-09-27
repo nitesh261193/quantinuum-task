@@ -32,4 +32,11 @@ jobs:
 
       - name: Run feature file tests (Behave)
         run: |
-          if [ -d "features" ]; then behave; fi
+          if [ -d "features" ]; then behave -f junit -o behave-report; fi
+
+      - name: Upload test reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            behave-report/*
