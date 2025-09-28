@@ -36,5 +36,15 @@ Feature: Booking Deletion
       | booking_id            | #{booking_id}    |
       | response_to_be_stored | delete_booking   |
     Then I see status code '201' in '#{delete_booking}'
+    When I send GET request for booking
+      | field                 | value                |
+      | headers               | #{universal_headers} |
+      | booking_id            | #{booking_id}        |
+      | response_to_be_stored | get_booking          |
+    Then I see status code '404' in '#{get_booking}'
+    Then the '#{get_booking}' response text matches
+      """
+      Not Found
+      """
 
 

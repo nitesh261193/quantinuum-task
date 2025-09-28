@@ -5,7 +5,7 @@ from behave.api.async_step import async_run_until_complete
 from steps_definition.health_check import check_service_health
 from header import Header
 from utility import get_formatting_string_value, get_response_object_from_formatted_string, match_single_json_obj, \
-    is_specific_type
+    is_specific_type, load_response
 import time
 from steps_definition.log_utility import log
 
@@ -57,3 +57,12 @@ def step_impl(context, response):
 @step("Test waits '(.*)' seconds")
 def step_impl(context, seconds):
     time.sleep(int(seconds))
+
+
+@step("the '(.*)' response text matches")
+def step_impl(context, response_name):
+    response = get_formatting_string_value(context, response_name)
+    my_value = context.text.rstrip()
+    assert str(my_value) in str(
+        response.text
+    ), f"Values {str(my_value)} does not match {str(response.text)}"

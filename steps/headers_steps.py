@@ -1,5 +1,6 @@
 import asyncio
 from behave import step
+from behave.api.async_step import async_run_until_complete
 from header import Header
 from steps_definition.auth import create_auth_token
 import json
@@ -19,6 +20,7 @@ def get_me_universal_header(context, header_context):
 
 
 @step("I have created token header '(.*)'")
+@async_run_until_complete
 async def get_me_token_header(context, header_context):
     # Create user headers
     hd = Header(
